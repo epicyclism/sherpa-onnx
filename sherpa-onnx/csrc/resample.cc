@@ -22,7 +22,8 @@
 // this file is copied and modified from
 // kaldi/src/feat/resample.cc
 
-#include "sherpa-onnx/csrc/resample.h"
+//#include "sherpa-onnx/csrc/resample.h"
+#include "resample.h"
 
 #include <cassert>
 #include <cmath>
