@@ -18,6 +18,7 @@ concurrency:
 
 jobs:
   sanitizer:
+    if: github.repository_owner == 'csukuangfj' || github.repository_owner == 'k2-fsa'
     runs-on: ${{ matrix.os }}
     name: sanitizer
     strategy:
@@ -115,6 +116,14 @@ jobs:
           export EXE=sherpa-onnx-offline-punctuation
 
           .github/scripts/test-offline-punctuation.sh
+
+      - name: Test offline diacritization
+        shell: bash
+        run: |
+          export PATH=$PWD/build/bin:$PATH
+          export EXE=sherpa-onnx-offline-diacritization
+
+          .github/scripts/test-offline-diacritization.sh
 
       - name: Test offline transducer
         shell: bash

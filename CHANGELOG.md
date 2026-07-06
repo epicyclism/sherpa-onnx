@@ -1,3 +1,74 @@
+## 1.13.3
+
+* Update onnxruntime to 1.26.0 for iOS (#3678)
+* Add multilingual Nemotron-3.5 streaming ASR support (#3671)
+* Add OfflineDiacritization JAVA bindings (#3669)
+* Add Android QNN demo for non-streaming zipformer with Reazonspeech (#3670)
+* Add offline CATT diacritization (encoder only) (#3647)
+* Add Android demo with QNN for Streaming X-ASR (#3668)
+* Export X-ASR models to QNN (#3666)
+* Add a Whisper example for the Rust API (#3661)
+* Export X-ASR models to sherpa-onnx (#3662)
+* Support streaming zipformer transducer ASR for QNN (#3660)
+* Support non-streaming Zipformer transducer for Qualcomm NPU with QNN (#3655)
+* Fix generating subtitles for funasr nano (#3659)
+* Upload X-ASR non-streaming zipformer transducer models (#3656)
+* Add Android demo for streaming zipformer transducer ASR with QNN (#3654)
+* Begin to export streaming zipformer transducer to QNN (#3653)
+* Add streaming zipformer transducer for Qualcomm NPU with QNN (#3645)
+* Update VoxSherpa TTS link for stable APK releases (#3648)
+* Allow overriding ONNX Runtime for mobile (#3617)
+* Fix heap-buffer-overflow in TopkIndex when topk > size (#3628)
+* Add doc for Python API (#3627)
+* Improve C/C++ API documentation, examples, and CI (#3626)
+* Add async TTS examples, LinearResampler API, and use node-cpal for microphone (#3623)
+* Add React Native sherpa-onnx wrapper (#3615)
+* Update Spacemit toolchain download URL (#3618)
+* Add JavaScript API examples for Supertonic3 TTS (#3614)
+
+## 1.13.2
+
+* Support Supertonic 3 TTS (#3605)
+* Release Supertonic3 TTS models (#3609)
+* Add Android demo for Supertonic3 TTS (#3612)
+* Add KittenTTS v0.8 support (#3591)
+* Export KittenTTS models (#3604)
+* Generate KittenTTS samples (#3607)
+* Export NeMo unified streaming 0.6b models (#3602)
+* Add buffered RNNT streaming path for Parakeet Unified (#3575)
+* Fix WASM onnxruntime pthread abort() crash (#3599)
+* Bump emsdk 4.0.23 (#3582)
+* Update onnxruntime package details for spacemit (#3610)
+
+## 1.13.1
+
+* Fix bugs in NeMo transducer modified beam search (#3589)
+* Add bounds checks to prevent SIGSEGV in speaker diarization (#3563)
+* Replace dead link with archived link (#3576)
+* Fix x64 gpu onnxruntime url (#3578)
+* Per-stream use_itn override via Stream::GetOptionInt for SenseVoice (#3565)
+
+## 1.13.0
+
+* Fix Flutter CI (#3560)
+* Fix building Flutter Android APPs (#3559)
+* Export nvidia/parakeet-unified-en-0.6b to sherpa-onnx (#3556)
+* Update nemotron-speech-streaming-en-0.6b (#3555)
+* Expose log probabilities in OfflineRecognizerResult for Go binding (#3553)
+
+## 1.12.40
+
+* Add more Piper TTS models (#3547)
+* Add two Piper Chinese TTS models (#3546)
+* Upload the piper sq_AL model (#3541)
+* Add Albanian (sq_AL) Piper TTS voice by LanguageWeaver (#3539)
+* Add Tauri APP demo for VAD+ASR from a microphone (#3540)
+* Improve Tauri VAD+ASR example: settings UI, bug fixes, and RTF display (#3538)
+* Fix releasing go packages (#3537)
+* Fix publishing dart packages for Android (#3522)
+* Avoid passing invalid utf8 str to JNI (#3527)
+* Build Tauri desktop APPs for VAD+ASR (#3530)
+
 ## 1.12.39
 
 * Add tauri app example for non-streaming ASR + VAD (#3520)

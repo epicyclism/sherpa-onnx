@@ -12,6 +12,7 @@
 #include <utility>
 #include <vector>
 
+#include "sherpa-onnx/csrc/file-utils.h"
 #include "sherpa-onnx/csrc/macros.h"
 #include "sherpa-onnx/csrc/provider.h"
 #include "sherpa-onnx/csrc/text-utils.h"
@@ -58,7 +59,7 @@ static void ParseConfigFile(
   // format is still supported for backward compatibility.
   // additionally, DEBUG=1 can be set to print all configs read from the file.
 
-  std::ifstream is(config_path);
+  auto is = OpenInputFile(config_path);
   if (!is.is_open()) {
     SHERPA_ONNX_LOGE("Failed to open provider config file: %s",
                      config_path.c_str());
@@ -144,7 +145,13 @@ Ort::SessionOptions GetSessionOptionsImpl(
   Ort::SessionOptions sess_opts;
   sess_opts.SetIntraOpNumThreads(num_threads);
 
+#if SHERPA_ONNX_ENABLE_WASM
+  // ORT's wasm-with-pthreads prebuild shares one libc pthread pool between
+  // intra-op and inter-op threads; inter_op > 1 starves the intra-op pool.
+  sess_opts.SetInterOpNumThreads(1);
+#else
   sess_opts.SetInterOpNumThreads(num_threads);
+#endif
 
   std::vector<std::string> available_providers = Ort::GetAvailableProviders();
   std::ostringstream os;

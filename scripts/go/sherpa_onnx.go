@@ -644,6 +644,7 @@ type OfflineRecognizerResult struct {
 	Tokens     []string
 	Timestamps []float32
 	Durations  []float32
+	YsLogProbs []float32
 	Lang       string
 	Emotion    string
 	Event      string
@@ -938,14 +939,14 @@ func (s *OfflineStream) GetResult() *OfflineRecognizerResult {
 	p := C.SherpaOnnxGetOfflineStreamResult(s.impl)
 	defer C.SherpaOnnxDestroyOfflineRecognizerResult(p)
 	n := int(p.count)
-	if n == 0 {
-		return nil
-	}
 	result := &OfflineRecognizerResult{}
 	result.Text = C.GoString(p.text)
 	result.Lang = C.GoString(p.lang)
 	result.Emotion = C.GoString(p.emotion)
 	result.Event = C.GoString(p.event)
+	if n == 0 {
+		return result
+	}
 	result.Tokens = make([]string, n)
 	tokens := unsafe.Slice(p.tokens_arr, n)
 	for i := 0; i < n; i++ {
@@ -963,6 +964,13 @@ func (s *OfflineStream) GetResult() *OfflineRecognizerResult {
 		durations := unsafe.Slice(p.durations, n)
 		for i := 0; i < n; i++ {
 			result.Durations[i] = float32(durations[i])
+		}
+	}
+	if p.ys_log_probs != nil {
+		result.YsLogProbs = make([]float32, n)
+		ys_log_probs := unsafe.Slice(p.ys_log_probs, n)
+		for i := 0; i < n; i++ {
+			result.YsLogProbs[i] = float32(ys_log_probs[i])
 		}
 	}
 	return result
