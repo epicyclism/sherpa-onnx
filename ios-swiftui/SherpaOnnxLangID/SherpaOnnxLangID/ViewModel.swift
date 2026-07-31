@@ -5,6 +5,8 @@
 //  Created by knight on 2024/4/1.
 //
 
+import SherpaOnnx
+import SherpaOnnxC
 import SwiftUI
 import AVFoundation
 

@@ -5,6 +5,8 @@
 //  Created by knight on 2023/4/5.
 //
 
+import SherpaOnnx
+import SherpaOnnxC
 import Foundation
 import AVFoundation
 

@@ -4,11 +4,11 @@ set -ex
 
 cd "$(dirname "$0")"
 
-old_version_code=20260513
-new_version_code=20260608
+old_version_code=20260608
+new_version_code=20260707
 
-old_version="1\.13\.2"
-new_version="1\.13\.3"
+old_version="1\.13\.3"
+new_version="1\.13\.4"
 
 replace_str="s/$old_version/$new_version/g"
 
@@ -33,6 +33,8 @@ sed -i.bak "$replace_str" ./setup.py
 
 sed -i.bak "$replace_str" ./build-ios-shared.sh
 sed -i.bak "$replace_str" ./pom.xml
+sed -i.bak "$replace_str" ./sherpa-onnx/java-api/pom.xml
+sed -i.bak "$replace_str" ./sherpa-onnx/java-api/README.md
 sed -i.bak "$replace_str" ./jitpack.yml
 sed -i.bak "$replace_str" ./android/SherpaOnnxAar/README.md
 

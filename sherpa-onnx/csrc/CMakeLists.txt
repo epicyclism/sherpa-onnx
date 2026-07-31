@@ -261,8 +261,10 @@ if(SHERPA_ONNX_ENABLE_QNN)
     ./qnn/offline-sense-voice-model-qnn.cc
     ./qnn/offline-paraformer-model-qnn.cc
     ./qnn/offline-whisper-model-qnn.cc
+    ./qnn/offline-moonshine-model-qnn.cc
     ./qnn/offline-zipformer-transducer-model-qnn.cc
     ./qnn/offline-zipformer-ctc-model-qnn.cc
+    ./qnn/online-nemo-transducer-model-qnn.cc
     ./qnn/online-zipformer-transducer-model-qnn.cc
     ./qnn/qnn-backend.cc
     ./qnn/qnn-model.cc
@@ -544,6 +546,7 @@ if(SHERPA_ONNX_ENABLE_BINARY)
     sherpa-onnx-vad
     sherpa-onnx-vad-with-offline-asr
     sherpa-onnx-vad-with-online-asr
+    sherpa-onnx-version
   )
   if(SHERPA_ONNX_ENABLE_TTS)
     list(APPEND main_exes
@@ -585,7 +588,6 @@ if(SHERPA_ONNX_ENABLE_BINARY)
   install(
     TARGETS
       ${main_exes}
-      sherpa-onnx-version
     DESTINATION
       bin
   )
@@ -832,6 +834,7 @@ if(SHERPA_ONNX_ENABLE_TESTS)
     packed-sequence-test.cc
     pad-sequence-test.cc
     regex-lang-test.cc
+    session-test.cc
     slice-test.cc
     stack-test.cc
     text-utils-test.cc
@@ -845,6 +848,7 @@ if(SHERPA_ONNX_ENABLE_TESTS)
     list(APPEND sherpa_onnx_test_srcs
       sentence-piece-tokenizer-test.cc
       piper-phonemize-test.cc
+      offline-tts-supertonic-unicode-processor-test.cc
     )
   endif()
 
