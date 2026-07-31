@@ -11,3 +11,16 @@ Turn log output off by modifying macros.h, control with NO_SHERPA_ONNX_LOGE
 
 cmake -DCMAKE_BUILD_TYPE=Release -DSHERPA_ONNX_ENABLE_WEBSOCKET=OFF -DSHERPA_ONNX_ENABLE_DIRECTML=ON -DSHERPA_ONNX_ENABLE_TTS=OFF -DSHERPA_ONNX_ENABLE_SPEAKER_DIARIZATION=OFF -DBUILD_SHARED_LIBS=ON -DSHERPA_ONNX_ENABLE_GPU=ON -DCMAKE_CXX_FLAGS="-DNO_SHERPA_ONNX_LOGE=1" ..
 cmake --build . --config Release
+
+April 20 2026
+Merge from upstream, then build again with the same command as above. This should fix the wstring issue and allow us to remove the hack in offline-funasr-nano-model.cpp
+
+(Copilot for the win?)
+
+July 6 2026
+
+git fetch upstream
+git merge upstream/master
+
+Merge from upstream.
+Then build again with the same command as above.

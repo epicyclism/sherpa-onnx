@@ -270,6 +270,7 @@ if(SHERPA_ONNX_ENABLE_QNN)
   )
 endif()
 
+if(SHERPA_ONNX_ENABLE_FUNASR)
 list(APPEND sources
   offline-funasr-nano-model-config.cc
   offline-funasr-nano-model.cc
@@ -280,6 +281,7 @@ list(APPEND sources
   offline-recognizer-qwen3-asr-impl.cc
   qwen-asr-tokenizer.cc
 )
+endif()
 
 if(SHERPA_ONNX_ENABLE_TTS)
   list(APPEND sources
